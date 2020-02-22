@@ -2,13 +2,14 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
 class CreateLabelsTable extends Migration
 {
     public function up()
     {
-        Schema::create('labels', function (Blueprint $table) {
+        Schema::create(Config::get('labels.tables.labels'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('name');
@@ -17,7 +18,7 @@ class CreateLabelsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('model_has_labels', function (Blueprint $table) {
+        Schema::create(Config::get('labels.tables.model_has_labels'), function (Blueprint $table) {
             $table->unsignedBigInteger('label_id');
             $table->morphs('model');
         });
@@ -25,6 +26,7 @@ class CreateLabelsTable extends Migration
 
     public function down()
     {
-        Schema::drop('labels');
+        Schema::dropIfExists(Config::get('labels.tables.model_has_labels'));
+        Schema::dropIfExists(Config::get('labels.tables.labels'));
     }
 }

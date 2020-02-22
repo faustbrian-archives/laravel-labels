@@ -17,10 +17,19 @@ use Illuminate\Support\ServiceProvider;
 
 class LabelsServiceProvider extends ServiceProvider
 {
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/labels.php', 'labels');
+    }
+
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+
+            $this->publishes([
+                __DIR__.'/../../config/labels.php' => $this->app->configPath('labels.php'),
+            ], 'config');
 
             $this->publishes([
                 __DIR__.'/../database/migrations/' => $this->app->databasePath('migrations'),

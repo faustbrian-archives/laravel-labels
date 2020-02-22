@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace KodeKeep\Labels\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -31,5 +32,10 @@ class Label extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug');
+    }
+
+    public function getTable(): string
+    {
+        return Config::get('labels.tables.labels');
     }
 }
