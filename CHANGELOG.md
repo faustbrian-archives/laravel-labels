@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 1.1.0 - 2020-02-23
+
+### Added
+
+- Laravel 7 Support
+
+### Changed
+
+- Attach labels directly to models to create distinct behaviour from tags
+
 ## 1.0.0 - 2020-02-19
 
 - initial release
