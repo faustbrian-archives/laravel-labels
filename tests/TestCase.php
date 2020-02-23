@@ -13,13 +13,24 @@ declare(strict_types=1);
 
 namespace KodeKeep\Labels\Tests;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\WithFaker;
 use KodeKeep\Labels\Providers\LabelsServiceProvider;
+use KodeKeep\Labels\Tests\Unit\ClassThatHasLabels;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
     use WithFaker;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
+
+        $this->artisan('migrate', ['--database' => 'testbench'])->run();
+    }
 
     protected function getEnvironmentSetUp($app): void
     {
@@ -35,5 +46,14 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [LabelsServiceProvider::class];
+    }
+
+    protected function user(): Model
+    {
+        return ClassThatHasLabels::create([
+            'name'     => $this->faker->name,
+            'email'    => $this->faker->safeEmail,
+            'password' => $this->faker->password,
+        ]);
     }
 }

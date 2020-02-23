@@ -25,8 +25,6 @@ return [
 
         'labels' => 'labels',
 
-        'model_has_labels' => 'model_has_labels',
-
     ],
 
 ];

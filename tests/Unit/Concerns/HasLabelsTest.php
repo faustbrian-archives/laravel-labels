@@ -13,11 +13,10 @@ declare(strict_types=1);
 
 namespace KodeKeep\Labels\Tests\Unit\Concerns;
 
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
 use KodeKeep\Labels\Tests\TestCase;
-use KodeKeep\Labels\Tests\Unit\ClassThatHasLabels;
 
 /**
  * @covers \KodeKeep\Labels\Concerns\HasLabels
@@ -29,14 +28,7 @@ class HasLabelsTest extends TestCase
     /** @test */
     public function morphs_to_a_labelable(): void
     {
-        $this->loadLaravelMigrations(['--database' => 'testbench']);
-        $this->artisan('migrate', ['--database' => 'testbench'])->run();
-
-        $user = ClassThatHasLabels::create([
-            'name'     => 'John Doe',
-            'email'    => 'john@doe.com',
-            'password' => 'password',
-        ]);
+        $user = $this->user();
 
         $user->labels()->create([
             'name'        => $this->faker->firstName,
@@ -44,7 +36,7 @@ class HasLabelsTest extends TestCase
             'color'       => $this->faker->hexColor,
         ]);
 
-        $this->assertInstanceOf(MorphToMany::class, $user->labels());
+        $this->assertInstanceOf(MorphMany::class, $user->labels());
         $this->assertInstanceOf(Collection::class, $user->labels);
     }
 }

@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace KodeKeep\Labels\Concerns;
 
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Config;
 
 trait HasLabels
 {
-    public function labels(): MorphToMany
+    public function labels(): MorphMany
     {
-        return $this->morphToMany(Config::get('labels.models.label'), 'model', 'model_has_labels');
+        return $this->morphMany(Config::get('labels.models.label'), 'labelable');
     }
 }

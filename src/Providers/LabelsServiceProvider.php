@@ -19,7 +19,7 @@ class LabelsServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/labels.php', 'labels');
+        $this->mergeConfigFrom(__DIR__.'/../../config/labels.php', 'labels');
     }
 
     public function boot(): void

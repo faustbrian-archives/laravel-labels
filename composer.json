@@ -18,6 +18,7 @@
     "require": {
         "php": "^7.4",
         "illuminate/contracts": "^6.0",
+        "illuminate/database": "^6.16",
         "illuminate/support": "^6.0",
         "spatie/laravel-sluggable": "^2.3"
     },

@@ -13,9 +13,11 @@ declare(strict_types=1);
 
 namespace KodeKeep\Labels\Tests\Unit\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use KodeKeep\Labels\Models\Label;
 use KodeKeep\Labels\Tests\TestCase;
+use KodeKeep\Labels\Tests\Unit\ClassThatHasLabels;
 
 /**
  * @covers \KodeKeep\Labels\Models\Label
@@ -34,10 +36,14 @@ class LabelTest extends TestCase
 
     private function createLabel(): Label
     {
+        Model::unguard();
+
         return Label::create([
-            'name'        => $this->faker->firstName,
-            'description' => $this->faker->paragraph,
-            'color'       => $this->faker->hexColor,
+            'labelable_id'   => $this->user()->id,
+            'labelable_type' => ClassThatHasLabels::class,
+            'name'           => $this->faker->firstName,
+            'description'    => $this->faker->paragraph,
+            'color'          => $this->faker->hexColor,
         ]);
     }
 }
