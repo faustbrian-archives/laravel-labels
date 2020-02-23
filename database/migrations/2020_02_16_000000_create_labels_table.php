@@ -15,7 +15,7 @@ class CreateLabelsTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->string('description');
-            $table->string('color')->nullable();
+            $table->string('color');
             $table->timestamps();
         });
     }
