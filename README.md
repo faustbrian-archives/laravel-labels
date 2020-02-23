@@ -19,7 +19,7 @@ Tags are reusable phrases that are stored in the database and might initially no
 
 ### Labels
 
-Labels are similar to Tags but have a few key differences. The first being that they are not just a phrase but contain additionally information like a description and color, think of them like those small badges you can add in your todo app to organise things. The second and more important difference is that they aren't intended to be reusable across an application and instead are bound to a specific entity.
+Labels are similar to Tags but have a few key differences. The first being that they are not just a phrase but contain additional information like a description and color, think of them like those small badges you can add in your todo app to organise things. The second and more important difference is that they aren't intended to be reusable across an application and instead are bound to a specific entity.
 
 The application from which this behaviour was extracted has entities that have labels and those labels are used for child resources to perform tasks based on them. The names, descriptions and colors of these labels are not enforced to be unique which means they can't be stored once and reused across the whole application like with tags. There could be hundreds of projects that have the same label names like "Work" and "Hobby" with the only difference being the color which would make the database structure more complex if we would want to store those labels in a single table and attach them to multiple projects instead of specifically creating those labels for a project.
 
