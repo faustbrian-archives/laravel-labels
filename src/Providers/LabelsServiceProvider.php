@@ -25,8 +25,6 @@ class LabelsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
             $this->publishes([
                 __DIR__.'/../../config/labels.php' => $this->app->configPath('labels.php'),
             ], 'config');
