@@ -5,21 +5,21 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Labels.
  *
- * (c) KodeKeep <hello@kodekeep.com>
+ * (c) Konceiver <info@konceiver.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KodeKeep\Labels\Tests\Unit\Concerns;
+namespace Konceiver\Labels\Tests\Unit\Concerns;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
-use KodeKeep\Labels\Tests\TestCase;
+use Konceiver\Labels\Tests\TestCase;
 
 /**
- * @covers \KodeKeep\Labels\Concerns\HasLabels
+ * @covers \Konceiver\Labels\Concerns\HasLabels
  */
 class HasLabelsTest extends TestCase
 {

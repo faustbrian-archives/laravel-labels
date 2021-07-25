@@ -5,18 +5,18 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Labels.
  *
- * (c) KodeKeep <hello@kodekeep.com>
+ * (c) Konceiver <info@konceiver.dev>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KodeKeep\Labels\Tests;
+namespace Konceiver\Labels\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\WithFaker;
-use KodeKeep\Labels\Providers\LabelsServiceProvider;
-use KodeKeep\Labels\Tests\Unit\ClassThatHasLabels;
+use Konceiver\Labels\Providers\LabelsServiceProvider;
+use Konceiver\Labels\Tests\Unit\ClassThatHasLabels;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
